@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}User Details{% endblock %}
+
+{% block content %}
+<h2>User Details</h2>
+<p><strong>ID:</strong> {{ user.id }}</p>
+<p><strong>Username:</strong> {{ user.username }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+
+<h3>Posts</h3>
+<ul>
+    {% for post in user.posts %}
+    <li>
+        <h5>{{ post.title }}</h5>
+        <p>{{ post.content }}</p>
+    </li>
+    {% endfor %}
+</ul>
+
+<a href="{{ url_for('add_post', user_id=user.id) }}">Add Post</a>
+<a href="{{ url_for('view_users') }}">Back</a>
+{% endblock %}
